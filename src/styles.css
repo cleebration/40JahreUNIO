@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap");
+
+/* ===========================================================================
+   Marken-Tokens – HIER Farben/Branding austauschen
+   =========================================================================== */
+:root {
+  --paper: #e8e4db;        /* Galeriewand */
+  --wall: #e0dbd0;         /* Sektionsfläche */
+  --frame: #fbfaf6;        /* Passepartout um die Kunst */
+  --ink: #1f201b;          /* Text */
+  --ink-soft: #54564d;     /* Sekundärtext */
+  --line: #c8c2b5;         /* Linien */
+  --brand: #2e2a66;        /* Akzent (Konzert-Indigo) – austauschbar */
+  --brand-ink: #f4f2ea;    /* Text auf Akzent/Dunkel */
+  --dark: #17170f;         /* Hero / Konzertsaal */
+
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Inter", system-ui, -apple-system, sans-serif;
+  --label: "Space Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --maxw: 1240px;
+  --gap: clamp(14px, 2.2vw, 26px);
+  --radius: 2px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--brand-ink);
+  padding: 8px 14px;
+  z-index: 100;
+}
+.skip:focus { left: 8px; top: 8px; }
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+/* ===========================================================================
+   Kopf
+   =========================================================================== */
+.site-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px clamp(16px, 4vw, 48px);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.brand-logo { height: 38px; width: auto; }
+.brand-text { display: flex; flex-direction: column; line-height: 1; }
+.brand-occasion {
+  font-family: var(--label);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.brand-org {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: 0.02em;
+}
+.head-meta {
+  margin-left: auto;
+  font-family: var(--label);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+/* ===========================================================================
+   Hero – dunkler Konzertsaal
+   =========================================================================== */
+.hero {
+  background: var(--dark);
+  color: var(--brand-ink);
+  padding: clamp(40px, 8vw, 96px) clamp(16px, 4vw, 48px) clamp(36px, 6vw, 72px);
+}
+.hero-kicker {
+  font-family: var(--label);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #b9b3c9;
+  margin: 0 0 18px;
+}
+.hero-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: clamp(44px, 9vw, 116px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 14ch;
+}
+.hero-intro {
+  max-width: 62ch;
+  margin: clamp(22px, 4vw, 34px) 0 0;
+  font-size: clamp(16px, 1.6vw, 19px);
+  color: #ded9ea;
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(26px, 5vw, 64px);
+  margin: clamp(28px, 5vw, 44px) 0 0;
+}
+.hero-stats div { display: flex; flex-direction: column-reverse; }
+.hero-stats dt {
+  font-family: var(--label);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b9b3c9;
+}
+.hero-stats dd {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1;
+}
+.hero-concert {
+  margin: clamp(26px, 5vw, 40px) 0 0;
+  padding-top: 18px;
+  border-top: 1px solid #34323f;
+  font-family: var(--label);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: #cfcad9;
+}
+
+/* ===========================================================================
+   Raum-Index (Signatur: farbcodierte Räume)
+   =========================================================================== */
+.motif-index {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 18px clamp(16px, 4vw, 48px);
+  background: var(--wall);
+  border-bottom: 1px solid var(--line);
+  scrollbar-width: thin;
+}
+.chip {
+  --room: var(--brand);
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 14px 9px 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--room);
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.chip:hover { transform: translateY(-2px); background: var(--frame); }
+.chip.is-active { background: var(--ink); color: var(--brand-ink); border-color: var(--ink); }
+.chip-no {
+  font-family: var(--label);
+  font-size: 11px;
+  color: var(--room);
+}
+.chip.is-active .chip-no { color: var(--brand-ink); }
+.chip-name { font-weight: 500; }
+.chip-count {
+  font-family: var(--label);
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+.chip.is-active .chip-count { color: #c8c4d6; }
+.chip-all { border-left-color: var(--ink); }
+
+/* ===========================================================================
+   Raum-Kopf
+   =========================================================================== */
+.room { padding: clamp(26px, 4vw, 44px) clamp(16px, 4vw, 48px) 64px; max-width: var(--maxw); margin: 0 auto; }
+.room-head { --room: var(--brand); margin: 0 0 clamp(20px, 3vw, 34px); }
+.room-rule { display: block; width: 56px; height: 5px; background: var(--room); margin-bottom: 16px; }
+.room-title { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 52px); line-height: 1; margin: 0; }
+.room-sub { font-family: var(--label); font-size: 13px; letter-spacing: 0.04em; color: var(--ink-soft); margin: 8px 0 0; }
+.room-count { font-family: var(--label); font-size: 12px; color: var(--ink-soft); margin: 4px 0 0; }
+
+.notice {
+  max-width: var(--maxw);
+  margin: 22px auto 0;
+  padding: 0 clamp(16px, 4vw, 48px);
+  font-family: var(--label);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* ===========================================================================
+   Galerie – Salon-Hängung (Spalten-Masonry)
+   =========================================================================== */
+.grid {
+  column-gap: var(--gap);
+  column-count: 1;
+}
+@media (min-width: 560px) { .grid { column-count: 2; } }
+@media (min-width: 900px) { .grid { column-count: 3; } }
+@media (min-width: 1200px) { .grid { column-count: 4; } }
+
+.card {
+  --room: var(--brand);
+  display: block;
+  break-inside: avoid;
+  margin-bottom: var(--gap);
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Rahmen + Passepartout */
+.frame { background: var(--frame); border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06); }
+.mat { padding: 12px; }
+.card:hover .frame { box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16); transform: translateY(-3px); }
+.frame, .card:hover .frame { transition: transform 0.16s ease, box-shadow 0.16s ease; }
+.art { width: 100%; height: auto; background: #d8d3c8; }
+
+/* Platzhalter, solange kein Bild vorhanden */
+.art-placeholder {
+  --room: #888;
+  position: relative;
+  width: 100%;
+  height: 0;
+  background: color-mix(in srgb, var(--room) 16%, var(--frame));
+  border: 1px dashed color-mix(in srgb, var(--room) 45%, var(--line));
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 16px;
+}
+.art-placeholder .ph-title {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 18px;
+  font-family: var(--display);
+  font-size: 17px;
+  color: color-mix(in srgb, var(--room) 70%, var(--ink));
+}
+.art-placeholder .ph-note {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  font-family: var(--label);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Wandtext */
+.label { padding: 12px 2px 0; border-top: 2px solid var(--room); margin-top: 10px; }
+.label-name { font-weight: 600; font-size: 15px; }
+.label-meta { font-family: var(--label); font-size: 11px; color: var(--ink-soft); margin-top: 2px; display: flex; gap: 6px; flex-wrap: wrap; }
+.label-dot { opacity: 0.5; }
+.label-title { font-family: var(--display); font-style: italic; font-size: 15px; margin-top: 6px; }
+.label-tech { font-family: var(--label); font-size: 11px; color: var(--ink-soft); margin-top: 4px; }
+
+/* ===========================================================================
+   Werk-Detailseite
+   =========================================================================== */
+.workpage { --room: var(--brand); max-width: var(--maxw); margin: 0 auto; padding: clamp(22px, 4vw, 40px) clamp(16px, 4vw, 48px) 72px; }
+.crumbs { font-family: var(--label); font-size: 12px; color: var(--ink-soft); margin: 0 0 22px; }
+.textlink { color: var(--brand); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--brand) 40%, transparent); }
+.textlink:hover { border-bottom-color: var(--brand); }
+
+.work-layout { display: grid; grid-template-columns: 1fr; gap: clamp(22px, 4vw, 44px); align-items: start; }
+@media (min-width: 880px) { .work-layout { grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr); } }
+
+.work-art .frame { box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18); }
+.work-art .mat { padding: clamp(14px, 2.5vw, 28px); }
+.work-art .art-placeholder { padding-top: 75% !important; }
+
+.work-label { position: sticky; top: 18px; }
+.wl-room { display: inline-block; font-family: var(--label); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--room); border-left-width: 4px; color: color-mix(in srgb, var(--room) 75%, var(--ink)); }
+.wl-name { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 46px); line-height: 1.02; margin: 16px 0 0; }
+.wl-title { font-family: var(--display); font-style: italic; font-size: 20px; margin: 8px 0 0; color: var(--ink); }
+.wl-facts { margin: 26px 0 0; border-top: 1px solid var(--line); }
+.wl-facts > div { display: grid; grid-template-columns: 110px 1fr; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.wl-facts dt { font-family: var(--label); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin: 0; }
+.wl-facts dd { margin: 0; }
+.wl-it { color: var(--ink-soft); font-style: italic; }
+
+.work-nav { display: flex; justify-content: space-between; gap: 16px; margin: clamp(30px, 5vw, 52px) 0 0; padding-top: 18px; border-top: 1px solid var(--line); }
+.work-nav-link { font-family: var(--label); font-size: 12px; text-decoration: none; color: var(--ink); max-width: 45%; }
+.work-nav-link:hover { color: var(--brand); }
+.work-nav-link.next { text-align: right; margin-left: auto; }
+
+.back-row { margin-top: 36px; font-family: var(--label); font-size: 13px; }
+
+/* ===========================================================================
+   Fuß
+   =========================================================================== */
+.site-foot { background: var(--dark); color: var(--brand-ink); padding: clamp(30px, 5vw, 54px) clamp(16px, 4vw, 48px); margin-top: auto; }
+.foot-row { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; max-width: var(--maxw); margin: 0 auto; }
+.foot-strong { font-family: var(--display); font-size: 20px; }
+.foot-soft { font-family: var(--label); font-size: 12px; color: #b9b3c9; margin-top: 4px; }
+.foot-right { text-align: right; display: flex; flex-direction: column; gap: 4px; }
+.foot-right a { color: var(--brand-ink); text-decoration: none; border-bottom: 1px solid #4a4760; }
+.foot-fine { max-width: var(--maxw); margin: 26px auto 0; font-size: 12px; color: #9b96aa; }
+
+/* ===========================================================================
+   Bewegung sparsam + Barrierefreiheit
+   =========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

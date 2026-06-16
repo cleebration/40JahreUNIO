@@ -1,0 +1,19 @@
+{
+  "_hinweis": "Korrekturen pro Werk. Den <slug> aus der Adresszeile ablesen: /werk/<slug>. Danach 'npm run images' erneut ausfuehren.",
+  "_drehung": "Grad im Uhrzeigersinn: 90, 180 oder 270.",
+  "_zuschnitt": "Weissen Rand auch bei Nicht-PDFs wegschneiden: \"slug\": { \"trim\": true }. PDF-Beschnitt ausschalten: \"slug\": { \"trim\": false }",
+
+  "jakob-weinberger-ochsenkarren": 270,
+  "theresa-poell-baba-jaga": 270,
+  "theresa-poell-schloss": 90,
+  "emily-radner-tuilerien": 270,
+  "linda-lanza-gnom": 270,
+  "emily-radner-schloss": 270,
+  "emily-radner-gnom": 270,
+  "valentin-malicky-baba-jaga": 270,
+  "fridolin-malicky-tor-von-kiew": 180,
+  "anton-niedermayr-baba-jaga": 270,
+  "poldi-plaimer-limoges": 90,
+  "daniel-kurz-reichmann-gnom": 180,
+  "emilia-brandner-tuilerien": 180
+}
